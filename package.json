@@ -1,0 +1,43 @@
+{
+  "name": "sveltekit-postcss",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^7.0.17",
+    "@storybook/addon-interactions": "^7.0.17",
+    "@storybook/addon-links": "^7.0.17",
+    "@storybook/blocks": "^7.0.17",
+    "@storybook/svelte": "^7.0.17",
+    "@storybook/sveltekit": "^7.0.17",
+    "@storybook/testing-library": "^0.0.14-next.2",
+    "@sveltejs/adapter-auto": "^2.0.0",
+    "@sveltejs/kit": "^1.5.0",
+    "autoprefixer": "^10.4.14",
+    "lost": "^9.0.1",
+    "postcss": "^8.4.23",
+    "postcss-css-reset": "^1.0.2",
+    "postcss-for": "^2.1.1",
+    "postcss-load-config": "^4.0.1",
+    "postcss-nested": "^6.0.1",
+    "postcss-random": "^1.0.9",
+    "postcss-simple-vars": "^7.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "^7.0.17",
+    "svelte": "^3.54.0",
+    "svelte-icon": "^2.0.0",
+    "svelte-preprocess": "^5.0.3",
+    "vite": "^4.3.0"
+  },
+  "type": "module",
+  "dependencies": {
+    "@splidejs/svelte-splide": "^0.2.9"
+  }
+}
