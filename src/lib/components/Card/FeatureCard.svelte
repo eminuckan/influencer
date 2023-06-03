@@ -3,7 +3,13 @@
     export let title;
     export let desc;
     export let svgIcon;
-    export let options = null;
+
+    const iconOptions = {
+        width: 45,
+        height:45,
+        stroke: "none"
+
+    }
     // viewBox?: string
 
     // size?: string
@@ -17,7 +23,7 @@
 
 <div class="card">
     <div class="card__icon">
-        <Icon data={svgIcon} {...options}/>
+        <Icon data={svgIcon} {...iconOptions}/>
     </div>
 
     <h5 class="upper">{title}</h5>

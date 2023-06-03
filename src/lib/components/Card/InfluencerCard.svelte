@@ -1,20 +1,41 @@
 <script>
     import Icon from 'svelte-icon/Icon.svelte'
-    export let influencer;
+    import twitchLogo from '$lib/icons/social-media/twitch.svg?raw';
+    import youtubeLogo from '$lib/icons/social-media/youtube.svg?raw';
+    import instagramLogo from '$lib/icons/social-media/instagram.svg?raw';
+    import twitterLogo from '$lib/icons/social-media/twitter.svg?raw';
+
+    export let name;
+    export let pic;
+    export let links;
+    
+
+    const icons = {
+        twitch: twitchLogo,
+        youtube: youtubeLogo,
+        instagram: instagramLogo,
+        twitter: twitterLogo
+    };
+
     const socialIconOptions = {
         width: 25,
         height: 25,
         stroke: "none"
     }
+
+    const trimUrl = (url) => {
+        const urlObject = new URL(url);
+        return urlObject.hostname.replace(/.+\/\/|www.|\..+/g,'');
+    }
 </script>
 
 
-<div style="background-image: url({influencer.pic})" class="influencer-card">
+<div style="background-image: url({pic})" class="influencer-card">
     <div class="influencer-card__info">
-        <h6 class="capitalize">{influencer.name}</h6>
+        <h6 class="capitalize">{name}</h6>
         <div class="influencer-card__info--icons">
-            {#each influencer.icons as icon}
-                <a href={icon.link} target="_blank"><Icon data={icon.data} {...socialIconOptions} /></a>
+            {#each links as link}
+                <a href={link.link} target="_blank"><Icon data={icons[trimUrl(link.link)]} {...socialIconOptions} /></a>
             {/each}
         </div>
     </div>

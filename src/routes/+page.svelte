@@ -1,4 +1,6 @@
 <script>
+
+    export let data;
     // components
     import FeatureCard from '$lib/components/Card/FeatureCard.svelte';
     import Banner from "$lib/components/Banner/Banner.svelte";
@@ -7,6 +9,7 @@
     import InfluencerCard from '$lib/components/Card/InfluencerCard.svelte';
     import StepCard from '$lib/components/Card/StepCard.svelte';
     import Timeline from '$lib/components/Roadmap/Timeline.svelte';
+    import BlogCard from '../lib/components/Card/BlogCard.svelte';
 
     // package Components
     import { Splide, SplideSlide } from '@splidejs/svelte-splide';
@@ -19,58 +22,14 @@
     import handshake from '$lib/icons/handshake.svg?raw';
     import revenue from '$lib/icons/revenue.svg?raw';
 
-    // social media icons
-    import twitch from '../lib/icons/social-media/twitch.svg?raw';
-    import youtube from '../lib/icons/social-media/youtube.svg?raw';
-    import instagram from '../lib/icons/social-media/instagram.svg?raw';
-  import BlogCard from '../lib/components/Card/BlogCard.svelte';
-
-    const iconOptions = {
-        width: 45,
-        height:45,
-        stroke: "none"
-
-    }
-
-    const influencers = [  
-        {
-            icons: [  
-                {data: twitch, link: 'https://www.twitch.tv/annadeniz'},
-                {data: youtube, link: 'https://www.youtube.com/@AnnaDenizSayln'},
-                {data: instagram, link: 'https://www.instagram.com/annadenizsayln'},
-            ],
-            name: "Anna Deniz",
-            pic: "/img/influencers/anna-deniz.jpg"
-        },
-        {
-            icons: [
-                {data: twitch, link: 'https://www.twitch.tv/htalks'},
-                {data:youtube, link: 'https://www.youtube.com/c/HTalksYoutube'}
-            ],
-            name: "Hasan Arda Kaşıkçı",
-            pic: "/img/influencers/htalks.jpg"
-        },
-        {
-            icons:[
-                {data: youtube, link: 'https://www.youtube.com/@ekinkollama'},
-                {data: twitch, link: 'https://www.twitch.tv/taaisback'},
-                {data: instagram, link: 'https://www.instagram.com/ekinkollama/'}
-            ],
-            name: "Ekin Kollama",
-            pic: "/img/influencers/ekin-kollama.webp"
-        },
-        {
-            icons:[
-                {data: twitch, link: 'https://www.twitch.tv/miafitz'},
-                {data: instagram, link: 'https://www.instagram.com/miafitz/'},
-                {data: youtube, link: 'https://www.youtube.com/channel/UCPcJ2zVGNAyYmTfNfq_Vcdg'}
-            ],
-            name: "Miafitz",
-            pic: "/img/influencers/miafitz.png"
-        }
-
-    ];
-
+    /**
+     * TODO:
+     * Aşağıdaki timeline elemanları supabaseden çekilecek.
+     * Footer yapılacak
+     * Giriş/Kayıt sayfası yapılacak
+     * Supabase ile oauth authentication vs. araştırılacak
+     * Metamask JavascriptSDK entegrasyonu yapılacak.
+     */
     const items = [
         {
             date: "2023 Q3",
@@ -168,19 +127,16 @@
             title="Forem Ipsum" 
             desc="Sorem ipsum dolor sit amet, consectetur adipiscing elit."
             svgIcon={statsUp}
-            options={iconOptions}
         />
         <FeatureCard 
             title="Forem Ipsum" 
             desc="Sorem ipsum dolor sit amet, consectetur adipiscing elit."
             svgIcon={revenue}
-            options={iconOptions}
         />
         <FeatureCard 
             title="Win - Win" 
             desc="Sorem ipsum dolor sit amet, consectetur adipiscing elit."
             svgIcon={handshake}
-            options={iconOptions}
         />
     </div>
 </section>
@@ -201,9 +157,9 @@
             pagination:false
          }}
     >
-         {#each influencers as influencer}
+         {#each data.influencers as influencer}
             <SplideSlide>
-                <InfluencerCard influencer={influencer} />
+                <InfluencerCard name={influencer.name} pic={influencer.pic} links={influencer.influencer_links} />
             </SplideSlide>
          {/each}
         
@@ -229,6 +185,8 @@
     </div>
 
 </section>
+
+
 
 
 <style lang="postcss">
