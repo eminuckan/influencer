@@ -6,9 +6,9 @@
     {#each items as item }
         <div class="timeline__card">
             <span class="text-lg timeline__card--date" 
-                style="color: {item.active ? 'var(--primary-color)' : 'var(--body-color)'}"
+                style="color: {item.isActive ? 'var(--primary-color)' : 'var(--body-color)'}"
             >
-                {item.date}
+                {item.quarter}
             </span>
             <div class="timeline__card--info">
                 <h5 class="capitalize">{item.title}</h5>
@@ -41,6 +41,7 @@
             &--info{
                 display: flex;
                 flex-direction: column;
+                width: 100%;
                 gap: var(--space-sm);
                 background-color: var(--gray-color);
                 padding: var(--space-lg);
@@ -58,7 +59,7 @@
 
             &--date{
                 position: relative;
-                flex-basis: 100px;
+                flex-basis: 200px;
                 &::before{
                     content: "";
                     position: absolute;

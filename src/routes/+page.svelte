@@ -1,6 +1,7 @@
 <script>
 
     export let data;
+    $: pageData = data;
     // components
     import FeatureCard from '$lib/components/Card/FeatureCard.svelte';
     import Banner from "$lib/components/Banner/Banner.svelte";
@@ -21,48 +22,16 @@
     import statsUp from '$lib/icons/statsUp.svg?raw';
     import handshake from '$lib/icons/handshake.svg?raw';
     import revenue from '$lib/icons/revenue.svg?raw';
-
+    
     /**
      * TODO:
-     * Aşağıdaki timeline elemanları supabaseden çekilecek.
+     * [x] Aşağıdaki timeline elemanları supabaseden çekilecek.
      * Footer yapılacak
      * Giriş/Kayıt sayfası yapılacak
      * Supabase ile oauth authentication vs. araştırılacak
      * Metamask JavascriptSDK entegrasyonu yapılacak.
      */
-    const items = [
-        {
-            date: "2023 Q3",
-            title: "Lorem Culpa Magna sunt velit",
-            desc: "Ut aliquip ipsum incididunt magna tempor commodo ullamco nisi velit eu.",
-            active: false
-        },
-        {
-            date: "2022 Q1",
-            title: "Lorem Culpa Magna sunt velit",
-            desc: "Ut aliquip ipsum incididunt magna tempor commodo ullamco nisi velit eu.",
-            active: true
-        },
-        {
-            date: "2022 Q1",
-            title: "Lorem Culpa Magna sunt velit",
-            desc: "Ut aliquip ipsum incididunt magna tempor commodo ullamco nisi velit eu.",
-            active: false,
-        },
-        {
-            date: "2022 Q1",
-            title: "Lorem Culpa Magna sunt velit",
-            desc: "Ut aliquip ipsum incididunt magna tempor commodo ullamco nisi velit eu.",
-            active: false,
-        },
-        {
-            date: "2024 Q1",
-            title: "Tüm yatırımcılar fatihi götten sikecek",
-            desc: "Ut aliquip ipsum incididunt magna tempor commodo ullamco nisi velit eu.",
-            active: false
-        }
-    ];
-
+    
 </script>   
 
 <section class="hero boxed">
@@ -150,14 +119,14 @@
             perPage: 4,
             type: 'loop',
             perMove:1,
-            autoplay: true,
+            autoplay: false,
             lazyLoad: 'nearby',
             interval: 3000,
             gap:'1em',
             pagination:false
          }}
     >
-         {#each data.influencers as influencer}
+         {#each pageData.influencers as influencer}
             <SplideSlide>
                 <InfluencerCard name={influencer.name} pic={influencer.pic} links={influencer.influencer_links} />
             </SplideSlide>
@@ -171,7 +140,7 @@
 <section class="boxed roadmap">
     <h1 class="upper">Yol Haritası</h1>
     <div class="roadmap__timeline">
-        <Timeline items={items} />
+        <Timeline items={pageData.timelineItems} />
     </div>
 </section>
 
@@ -185,9 +154,6 @@
     </div>
 
 </section>
-
-
-
 
 <style lang="postcss">
     h1{

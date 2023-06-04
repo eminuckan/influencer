@@ -88,6 +88,7 @@
             background: linear-gradient(360deg, rgba(5,5,5,0.5798144941570378) 0%, rgba(255,255,255,0) 60%);
             width: 100%;
             height: 100%;
+            border-radius: var(--radius);
             
         }
 
