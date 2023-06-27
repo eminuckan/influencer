@@ -10,15 +10,7 @@
         stroke: "none"
 
     }
-    // viewBox?: string
 
-    // size?: string
-    // width?: string
-    // height?: string
-
-    // color?: string
-    // stroke?: string
-    // fill?: string
 </script>
 
 <div class="card">
@@ -32,24 +24,21 @@
 
 
 <style lang="postcss">
-
     .card{
-        padding: var(--space-xl);
-        background-color: var(--gray-color);
-        border-radius: var(--radius);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: var(--space-md);
-        text-align: center;
-        h5{
-            margin-top: 0;
-            margin-bottom:0;
-        }
-        p{
-            font-size: var(--text-sm);
-            margin-top: 0;
-            margin-bottom: 0;
+        @apply
+            p-12
+            bg-mordor-600
+            rounded-lg
+            flex
+            flex-col
+            items-center
+            gap-3
+            text-center
+    }
+    :global{
+        svg{
+            @apply
+                fill-primary-400
         }
     }
 </style>

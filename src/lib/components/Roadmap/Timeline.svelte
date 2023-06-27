@@ -2,79 +2,63 @@
     export let items;
 </script>
 
-<div class="timeline">
-    {#each items as item }
-        <div class="timeline__card">
-            <span class="text-lg timeline__card--date" 
-                style="color: {item.isActive ? 'var(--primary-color)' : 'var(--body-color)'}"
+<ol 
+>
+    {#each items as item}
+        <li>
+            <span class="ring {item.isActive ? 'active' : ''}"/>
+            <div
+                class="title"
             >
-                {item.quarter}
-            </span>
-            <div class="timeline__card--info">
-                <h5 class="capitalize">{item.title}</h5>
-                <p class="text-sm">{item.desc}</p>
+                <h3>
+                {item.title}
+                </h3>
+                <time>{item.quarter}</time
+                >
             </div>
-        </div>
+
+            <p>
+               {item.desc}
+            </p>
+        </li>
     {/each}
-</div>
+    
+</ol>
 
 <style lang="postcss">
-    .timeline{
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        gap: var(--space-sm);
-        margin-left: 30px;
-        &::before{
-            content: "";
-            position: absolute;
-            top:0;
-            left: calc(-1 * var(--space-lg));
-            height: 100%;
-            width: 100%;
-            border-left: 3px solid var(--primary-color);
-        }
-        &__card{    
-            display: flex;
-            gap: var(--space-md);
-            align-items: center;
-            &--info{
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-                gap: var(--space-sm);
-                background-color: var(--gray-color);
-                padding: var(--space-lg);
-                border-radius: var(--radius);
-
-                h5{
-                    font-family: var(--primary-font);
-                    margin: 0;
-                }
-
-                p{
-                    margin: 0;
-                }
-            }
-
-            &--date{
-                position: relative;
-                flex-basis: 200px;
-                &::before{
-                    content: "";
-                    position: absolute;
-                    width: 10px;
-                    height: 10px;
-                    border: 10px solid var(--primary-color);
-                    border-radius: 50%;
-                    left: calc(calc(-1 * var(--space-lg)) + 1px);
-                    top: 0;
-                    transform: translateY(-4px);
-                    background-color: var(--dark-color);
-                    filter: drop-shadow(1px 1px 10px rgba(255, 255, 63, 0.2));
-                }
-            }
-            
-        }
+    ol{
+        @apply
+            relative border-l-2 border-mordor-400 md:basis-2/3 lg:basis-2/3 xl:basis-2/3
     }
+
+    li{
+        @apply
+            mb-10 last:mb-0 ml-12 bg-mordor-500 py-8 px-10 rounded-lg
+    }
+
+    .ring{
+        @apply
+            absolute font-title flex items-center justify-center w-6 h-6 bg-mordor-500 rounded-full -left-3 ring-8 ring-mordor-400 
+    }
+
+    .active{
+        @apply
+            ring-primary-400 drop-shadow-primary-xl
+    }
+
+    .title{
+        @apply
+            flex flex-col-reverse sm:flex-row items-start sm:items-center justify-start gap-4 mb-4
+    }
+
+    h3{
+        @apply
+            text-xl font-semibold text-zinc-100 capitalize
+    }
+
+    time{
+        @apply
+            bg-primary-400 text-mordor-500 text-sm font-extrabold mr-2 px-2.5 py-0.5 rounded
+    }
+    
 </style>

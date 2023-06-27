@@ -1,6 +1,11 @@
 /* Write your global styles here, in PostCSS syntax */
-:root{
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* :root{
     --primary-color: #ccff33;
+    --primary-color-rgb: 204, 255, 51;
     --primary-dark-color: #A7BC15;
     --dark-color: #191919;
     --gray-color: #202020;
@@ -16,6 +21,7 @@
     --heading-line-height:113%;
     --body-line-height: 125%;
 
+    --text-xxs: calc(var(--text-base-size) / calc(var(--text-scale-ratio) * var(--text-scale-ratio)));
     --text-xs: calc(var(--text-base-size) / var(--text-scale-ratio));
     --text-sm: var(--text-base-size);
     --text-md: calc(var(--text-base-size)* var(--text-scale-ratio));
@@ -25,17 +31,18 @@
     --text-xxxl: calc(var(--text-base-size)* var(--text-scale-ratio)* var(--text-scale-ratio)* var(--text-scale-ratio)*var(--text-scale-ratio)* var(--text-scale-ratio));
 
     --space-unit: 1em; 
-    --space-xxxs: var(--space-unit);
+    --space-xxxs: calc(var(--space-unit) / 6);
     --space-xxs: calc(0.25 * var(--space-unit));
     --space-xs: calc(0.50 * var(--space-unit));
     --space-sm: calc(0.75 * var(--space-unit));
     --space-md: calc(1.25 * var(--space-unit));
     --space-lg: calc(2 * var(--space-unit));
     --space-xl: calc(3.25 * var(--space-unit));
-    --space-xxl: calc(5.25 * var(--space-unit));
+    --space-xxl: calc(5.25 * var(--space-unit)); 
+    --space-xxxl: calc(7.25 * var(--space-unit));
 
     --radius: 0.7em;
-}
+} */
 
 @font-face {
     font-family: 'Phonk';
@@ -51,129 +58,102 @@
     src: url("/fonts/phonk-italic.woff2") format("woff2"); 
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 2px solid #484848;
+  -webkit-text-fill-color: #fafafa;
+  -webkit-box-shadow: 0 0 0px 1000px #1a1a1a inset;
+  box-shadow: 0 0 0px 1000px #1a1a1a inset;
+}
 
+input{
+    all: unset;
+}
+
+*{
+    box-sizing: border-box;
+}
 body {
-    color: var(--body-color);
-    background: var(--dark-color);
-    font-size: var(--text-base-size);
-    font-family: var(--primary-font);
-    line-height: var(--body-line-height);
-    margin: 0px !important;
+    @apply
+        bg-mordor-800
+        font-primary
+        text-base
+        text-neutral-400
+        leading-3
+        m-0
 }
 
 h1,h2,h3,h4, form legend {
-    font-family: var(--title-font);
-    color: var(--light-color);
-    line-height: var(--heading-line-height);
+    @apply
+        font-title
+        text-neutral-100
+        leading-[3rem]
 }
 
 h5,h6{
-    font-family: var(--primary-font);
-    color: var(--light-color);
-    line-height: var(--body-line-height);
+    @apply
+        font-primary
+        text-neutral-100
+        leading-5
+        font-medium
 }
 
-h1, .text-xxxl {
-    font-size: var(--text-xxxl);    
+h1{
+    @apply
+        text-3xl
+        sm:text-4xl
 }
 
-h2, .text-xxl{
-    font-size: var(--text-xxl);    
+h2{
+    @apply
+        text-2xl
+        sm:text-3xl
 }
 
-h3, .text-xl{
-    font-size: var(--text-xl);    
+h3{
+    @apply
+        text-xl
+        sm:text-2xl
 }
     
 
-h4, .text-lg{
-    font-size: var(--text-lg);    
+h4{
+    @apply
+        text-lg
+        sm:text-xl
 }
 
-h5, .text-md{
-    font-size: var(--text-md);
+h5{
+    @apply
+        text-base
+        sm:text-lg
 }
 
-h6, .text-sm{
-    font-size: var(--text-sm);
-}
-    
-
-.text-md {
-    font-size: var(--text-md);    
-}
-    
-    
-.text-sm, small{
-    font-size: var(--text-sm);    
-}
-    
-
-.text-xs{
-    font-size: var(--text-xs);    
-}
-    
-
-.upper{
-    text-transform: uppercase;    
-}
-    
-
-.lower{
-    text-transform: lowercase;    
-}
-    
-
-.capitalize{
-    text-transform: capitalize;    
-}
-
-.underline{
-    text-decoration: underline;
-}
-    
-
-.highlight{
-    color: var(--primary-color);    
+h6{
+    @apply
+        text-sm
+        sm:text-base
 }
     
 p{
-
-    line-height: var(--body-line-height);
-    font-size: var(--text-md);
-    font-weight: 300;    
+    @apply
+        leading-6
+        text-sm
+        sm:text-base
+        font-normal
 }
 
 a{
     text-decoration: none;
     color: initial;
 }
-
-.button{
-    padding: 12px 35px;
-    font-family: var(--primary-font);
-    font-weight: 600;
-    font-size: var(--text-sm);
-    border-radius: 15px;
-    cursor: pointer;
-}
-
-section{
-    margin-bottom: var(--space-xxl);
-}
-
-.boxed{
-    padding: var(--space-xs) 8%;
-}
-
-.stretched{
-    width: 100%;
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: 0;
-    margin-right: 0;
-}
-
 
 .overlay {
     width: 100%;

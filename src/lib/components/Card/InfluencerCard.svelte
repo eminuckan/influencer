@@ -31,9 +31,9 @@
 
 
 <div style="background-image: url({pic})" class="influencer-card">
-    <div class="influencer-card__info">
-        <h6 class="capitalize">{name}</h6>
-        <div class="influencer-card__info--icons">
+    <div class="info">
+        <h6>{name}</h6>
+        <div class="icons">
             {#each links as link}
                 <a href={link.link} target="_blank"><Icon data={icons[trimUrl(link.link)]} {...socialIconOptions} /></a>
             {/each}
@@ -44,53 +44,47 @@
 
 <style lang="postcss">
     .influencer-card{
-        padding: var(--space-xl) var(--space-xs) var(--space-xs) var(--space-xs);
-        border-radius: var(--radius);
-        display: flex;
-        justify-content: center;
-        background-size: cover;
-        min-height: 12.5em;
-        min-width: 15.625em;
-        position: relative;
-        &__info{
-            margin-top:auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-            gap: var(--space-md);
-            z-index: 999;
-            h6{
-                font-family: var(--title-font);
-                margin-top: 0;
-                margin-bottom: 0;
-            }
-            :global{
-                svg{
-                    fill: var(--primary-color);
-                }
-            }
-
-            &--icons{
-                display: flex;
-                gap: var(--space-xs);
-                align-items: center;
-                justify-content: flex-start;
-            }
+        min-height: 16.5rem;
+        min-width: 16.5rem;
+        @apply
+            p-3
+            rounded-lg
+            flex
+            justify-center
+            bg-cover
+            relative
+            before:content-['']
+            before:absolute
+            before:top-0
+            before:left-0
+            before:w-full
+            before:h-full
+            before:bg-gradient-to-t from-mordor-900 to-transparent to-60%
+            before:opacity-95
+            before:rounded-lg
+    }
+    
+    .info{
+        @apply
+            mt-auto
+            flex
+            flex-col
+            justify-end
+            items-center
+            gap-5
+            z-50
+    }
+    .icons{
+        @apply
+            flex
+            gap-2
+            items-center
+            justify-start
+    }
+    :global{
+        svg{
+            @apply
+                fill-primary-400
         }
-
-        &::before{
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: rgb(5,5,5);
-            background: linear-gradient(360deg, rgba(5,5,5,0.5798144941570378) 0%, rgba(255,255,255,0) 60%);
-            width: 100%;
-            height: 100%;
-            border-radius: var(--radius);
-            
-        }
-
     }
 </style>

@@ -1,10 +1,13 @@
 <script>
   import "../app.postcss";
   import Header from "$lib/components/Header/Header.svelte";
+  import Footer from "$lib/components/Footer/Footer.svelte";
+  import { page } from "$app/stores";
+
+  $: displayHeader =
+    $page.url.pathname === "/giris" || $page.url.pathname === "/kayit-ol";
 </script>
-
 <svelte:head>
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -14,30 +17,16 @@
 </svelte:head>
 
 <sveltekit:body>
-  <!-- Overlay--Start -->
-  <div class="overlay">
-    <img src="/img/waves.svg" alt />
-  </div>
-  <!-- Overlay--End -->
-
-  <!-- Button Animation Filter -->
-
-  <!-- Button Animation Filter -->
-
   <!-- Header--Start -->
-  <Header />
+  {#if !displayHeader}
+    <Header />
+  {/if}
   <!-- Header--End -->
 
-  <slot />
-
-  <!-- Hero Container--Start -->
-
-  <!-- Hero Container--End -->
-
-  <!-- Banner--Start -->
-
-  <!-- Banner--End -->
+    <slot />
+  {#if !displayHeader}
+    <!-- Footer--Start -->
+    <Footer />
+    <!-- Footer--End -->
+  {/if}
 </sveltekit:body>
-
-
-
