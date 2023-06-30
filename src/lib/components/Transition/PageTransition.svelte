@@ -1,12 +1,12 @@
 <script>
-    import {fly,slide} from 'svelte/transition'
+    import {fly} from 'svelte/transition'
     
     export let url;
 </script>
 
 {#key url}
     <div
-    transition:slide={{delay:0,duration:300}}
+    transition:fly
     >
         <slot />
     </div>
