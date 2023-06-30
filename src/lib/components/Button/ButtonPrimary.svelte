@@ -1,13 +1,17 @@
 <script>
-    export let url;
+    export let url = null;
+    export let type = "button";
+    export let formaction = null;
 </script>
 
-{#if url}
+{#if url !== null}
     <a class="btn" href={url}><slot></slot></a>
 {:else}
     <button 
-        type="button" 
+        type={type} 
         class="btn"
+        formaction={formaction}
+        on:click
         >
         <slot></slot>
     </button>

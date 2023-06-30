@@ -3,47 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root{
-    --primary-color: #ccff33;
-    --primary-color-rgb: 204, 255, 51;
-    --primary-dark-color: #A7BC15;
-    --dark-color: #191919;
-    --gray-color: #202020;
-    --light-color: #f6f6f6;
-    --grayish-color: #adadad;
-    --body-color: rgba(255, 255, 255, 0.5);
-
-    --primary-font: 'Rubik', sans-serif;
-    --title-font: 'Phonk';
-
-    --text-base-size: 1em;
-    --text-scale-ratio: 1.200;
-    --heading-line-height:113%;
-    --body-line-height: 125%;
-
-    --text-xxs: calc(var(--text-base-size) / calc(var(--text-scale-ratio) * var(--text-scale-ratio)));
-    --text-xs: calc(var(--text-base-size) / var(--text-scale-ratio));
-    --text-sm: var(--text-base-size);
-    --text-md: calc(var(--text-base-size)* var(--text-scale-ratio));
-    --text-lg: calc(var(--text-base-size)* var(--text-scale-ratio)* var(--text-scale-ratio));
-    --text-xl: calc(var(--text-base-size)* var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio));
-    --text-xxl: calc(var(--text-base-size)* var(--text-scale-ratio)* var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio));
-    --text-xxxl: calc(var(--text-base-size)* var(--text-scale-ratio)* var(--text-scale-ratio)* var(--text-scale-ratio)*var(--text-scale-ratio)* var(--text-scale-ratio));
-
-    --space-unit: 1em; 
-    --space-xxxs: calc(var(--space-unit) / 6);
-    --space-xxs: calc(0.25 * var(--space-unit));
-    --space-xs: calc(0.50 * var(--space-unit));
-    --space-sm: calc(0.75 * var(--space-unit));
-    --space-md: calc(1.25 * var(--space-unit));
-    --space-lg: calc(2 * var(--space-unit));
-    --space-xl: calc(3.25 * var(--space-unit));
-    --space-xxl: calc(5.25 * var(--space-unit)); 
-    --space-xxxl: calc(7.25 * var(--space-unit));
-
-    --radius: 0.7em;
-} */
-
 @font-face {
     font-family: 'Phonk';
     font-weight: 600;
@@ -58,21 +17,6 @@
     src: url("/fonts/phonk-italic.woff2") format("woff2"); 
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
-  border: 2px solid #484848;
-  -webkit-text-fill-color: #fafafa;
-  -webkit-box-shadow: 0 0 0px 1000px #1a1a1a inset;
-  box-shadow: 0 0 0px 1000px #1a1a1a inset;
-}
-
 input{
     all: unset;
 }
@@ -80,6 +24,7 @@ input{
 *{
     box-sizing: border-box;
 }
+
 body {
     @apply
         bg-mordor-800

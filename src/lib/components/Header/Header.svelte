@@ -1,5 +1,7 @@
 <script>
     import ButtonPrimary from "$lib/components/Button/ButtonPrimary.svelte";
+
+    export let data;
 </script>
 <header class="container mx-auto px-8 md:px-16 lg:px-16 py-8">
     <nav class="border-gray-200">
@@ -11,7 +13,12 @@
         </a>
         <div class="flex justify-between gap-12">
           <div class="flex gap-3 md:order-2">
-            <ButtonPrimary url="/giris">Giriş / Kayıt</ButtonPrimary>
+            {#if !data.session}
+              <ButtonPrimary url="/login">Giriş / Kayıt</ButtonPrimary>
+
+            {:else}
+              <ButtonPrimary url="/logout">Çıkış</ButtonPrimary>
+            {/if}
             <button
               data-collapse-toggle="navbar-cta"
               type="button"
